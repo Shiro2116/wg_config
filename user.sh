@@ -79,10 +79,9 @@ add_user() {
      eval "echo \"$(cat "${template_file}")\"" > $userdir/client.all.conf
      sed -r "s/AllowedIPs.*/AllowedIPs = 0.0.0.0\/0/g" -i $userdir/client.all.conf
      
-     qrencode -t ansiutf8  < $userdir/client.conf
-     qrencode -o $userdir/$user.png  < $userdir/client.conf
-
-     qrencode -o $userdir/$user.all.png  < $userdir/client.all.conf
+     #qrencode -t ansiutf8  < $userdir/client.conf
+     #qrencode -o $userdir/$user.png  < $userdir/client.conf
+     #qrencode -o $userdir/$user.all.png  < $userdir/client.all.conf
      
      # change wg config
      local ip=${_VPN_IP%/*}/32
@@ -95,6 +94,9 @@ add_user() {
      fi
 
      echo "$user $_VPN_IP $public_key" >> ${SAVED_FILE}
+     clear
+     echo "[satmaxtdev]"
+     echo $public_key
     
     else
      echo "$user already exists." 1>&2
@@ -177,25 +179,7 @@ view_user() {
     local user=$1
     local userdir="users/$user"
 
-    echo "Client configuration ($(cat $userdir/client.conf | grep AllowedIPs))"
-    echo "client.conf:"
-    echo
-    cat $userdir/client.conf
-    echo
-    qrencode -t ansiutf8  < $userdir/client.conf
-    echo
-    echo
-    echo "----------------------------------------------------------------"
-    echo "----------------------------------------------------------------"
-    echo "----------------------------------------------------------------"
-    echo
-    echo
-    echo "Client configuration (AllowedIPs: 0.0.0.0/0)"
-    echo "client.all.conf:"
-    echo
     cat $userdir/client.all.conf
-    echo
-    qrencode -t ansiutf8  < $userdir/client.all.conf
 }
 
 usage() {
