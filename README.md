@@ -1,30 +1,3 @@
-**This is a part of project:**
-
-https://github.com/adrianmihalko/raspberrypiwireguard
-
-Be sure to read this first.
-
-
-##############################################################################
-
-
-
-
-This is a simple wireguard VPN user management script using on VPN server.
-Client config file and qrcode are generated.
-
-
-
-### dependency
-
-* wireguard
-* qrencode
-
-### config
-The wireguard default config directory is /etc/wireguard.
-The script config file is wg.def, create and edit it according to wg.def.sample.
-You can generate the public key and private key with command `wg genkey | tee > prikey | wg pubkey > pubkey`.
-
 ### usage
 
 Running as root.
@@ -33,6 +6,12 @@ Running as root.
 
 ```bash
 wg-quick up wg0
+```
+
+#### access the wg_config
+Access the wg_config directory first before using the script
+```bash
+cd ~/wg_config
 ```
 
 #### add a user
