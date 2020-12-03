@@ -2,6 +2,12 @@
 
 Running as root.
 
+#### Quick Installation
+```bash
+$ apt update && apt upgrade -y && apt install curl wget -y
+$ wget -O install-wireguard.sh "https://raw.githubusercontent.com/satriaajiputra/wg_config/conf/install-wireguard.sh" && chmod +x install-wireguard.sh && ./install-wireguard.sh
+```
+
 #### start wireguard
 
 ```bash
